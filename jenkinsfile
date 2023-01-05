@@ -26,4 +26,5 @@ stage('Deploy to Cloudhub') {
                 }
         }
      }
+ }
 }
