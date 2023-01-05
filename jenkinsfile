@@ -16,7 +16,7 @@ pipeline {
             }
 stage('Deploy to Cloudhub') {
     environment {
-                ANYPOINT_CREDENTIALS = CREDENTIALS('platform.credentials)
+                ANYPOINT_CREDENTIALS = CREDENTIALS('platform.credentials')
                 }
 
  
