@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="7b4148c8-b722-4450-9cc0-d3023e9d45ce" >
+		<http:listener-connection host="0.0.0.0" port="8082" />
+	</http:listener-config>
+	<flow name="flow-refFlow" doc:id="dfb5957b-19e9-4bb8-a722-8fc70379c33b" >
+		<http:listener doc:name="Listener" doc:id="ed0644fe-c63c-4e83-a0a5-d42599afab15" config-ref="HTTP_Listener_config" path="/flow-ref"/>
+		<set-payload value="Main Flow starts" doc:name="Set Payload" doc:id="df34ac0f-d40b-4402-8d96-0d89c0d99891" />
+		<set-variable value="10" doc:name="Set Variable" doc:id="22036e9a-ddd1-45c5-ba03-c306fd210d5a" variableName="x"/>
+		<flow-ref doc:name="Flow Reference" doc:id="b96b4cf3-2d91-49ee-ba54-fedb8b241b24" name="Sub_Flow"/>
+		<logger level="INFO" doc:name="Logger" doc:id="e9172298-f604-4ed3-b034-a20552a4edc2" message="Main Flow ends"/>
+	</flow>
+	<sub-flow name="Sub_Flow" doc:id="4a57814b-01c7-4dd2-8719-46dee0b6683d" >
+		<set-variable value="20" doc:name="Set Variable" doc:id="1951692c-173a-4e86-a59c-15b967c44b20" variableName="y"/>
+		<set-payload value="Child flow ends" doc:name="Set Payload" doc:id="b160e969-d10a-4344-b5f0-59fcea709f07" />
+	</sub-flow>
+</mule>
