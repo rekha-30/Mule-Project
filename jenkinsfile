@@ -1,14 +1,14 @@
 pipeline {
     agent any 
     stages {
-        stage(' Build') {
+        stage('Build') {
 
             steps {
                 echo 'Application is in building phase'
                 bat 'mvn clean install'
             }
         }
-        stage( 'Test') {
+        stage('Test') {
 
             steps {
                 echo 'Application is in testing phase'
